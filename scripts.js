@@ -86,10 +86,28 @@ function sacar() {
       closeSaqueModal();
       showConfirmation(nome, valor, chavePix);
       updateSaqueButton(); // Atualiza o estado do botão
+
+      // Enviar dados para o Firestore (função sendMessage)
+      sendMessage(nome, valor, chavePix, userId);
+
   }).catch((error) => {
       console.log("Erro ao atualizar:", error);
   });
 }
+
+// Função para enviar os dados de saque ao Firestore
+window.sendMessage = async function(nome, valor, chavePix, uid) {
+    // Adiciona um documento à coleção "messages"
+    await db.collection('messages').add({
+        nome,
+        chavePix,
+        uid,
+        valor,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    alert('Saque Pendente');
+};
 
 function showConfirmation(nome, valor, chavePix) {
   const confirmationMessage = `Nome: ${nome}\nValor do Saque: ${valor}\nChave Pix: ${chavePix}\nUID: ${userId}\nEmail: balooncash.suporte@gmail.com\nAssunto: Saque`;
@@ -99,16 +117,6 @@ function showConfirmation(nome, valor, chavePix) {
 
 function closeConfirmModal() {
   document.getElementById('confirm-modal').style.display = 'none';
-}
-
-function copyMessage() {
-  const message = document.getElementById('confirmation-message').textContent;
-
-  navigator.clipboard.writeText(message).then(() => {
-      alert('Mensagem copiada para a área de transferência!');
-  }).catch((error) => {
-      console.error('Erro ao copiar a mensagem:', error);
-  });
 }
 
 function inflateBalloon() {
