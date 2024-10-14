@@ -62,7 +62,7 @@ body {
   padding: 20px;
   background-color: #333;
   color: white;
-  width: 1280px;
+  width: 800px;
 }
 
 #pontuacao {
@@ -92,10 +92,10 @@ body {
 }
 
 .content-box {
-    background-color: white;
-    width: 1280px;
-    height: 720px;
-    border: 2px solid #333;
+    background-color: rgb(1, 175, 255);
+    width: 800px;
+    height: 800px;
+    border: 2px solid #000000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,12 +104,12 @@ body {
 
 .inner-box {
     background-image: url(ceu.jpeg);
-    width: calc(1280px - 80px);
-    height: calc(720px - 80px);
+    width: calc(800px - 0px);
+    height: calc(800px - 0px);
     border: 2px solid #666;
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 0px;
+    left: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
