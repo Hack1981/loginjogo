@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('papel1.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-box input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  width: 1280px;
+}
+
+#pontuacao {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+#saldo {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  flex-grow: 1; /* Faz o saldo ocupar o espaço central */
+}
+
+#saque-button {
+  background-color: #FF5733;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#saque-button:hover {
+  background-color: #FF3D00;
+}
+
+.content-box {
+    background-color: white;
+    width: 1280px;
+    height: 720px;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.inner-box {
+    background-image: url(ceu.jpeg);
+    width: calc(1280px - 80px);
+    height: calc(720px - 80px);
+    border: 2px solid #666;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.balloon {
+    width: 100px;
+    height: 150px;
+    background-color: rgb(255, 251, 0);
+    border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    position: relative;
+    transition: width 0.3s, height 0.3s;
+}
+
+.balloon::after {
+    content: '';
+    width: 2px;
+    height: 50px;
+    background-color: black;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bomb-button {
+    background-color: #555;
+    border: 2px solid #000;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bomb-button:hover {
+    background-color: #333;
+}
+
+.burst {
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    transition: none;
+}
+
+.boom-message {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: 5px solid black;
+    padding: 10px 20px;
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 0.5s;
+    z-index: 10;
+}
+
+.show-boom {
+    opacity: 1;
+    transform: translate(-120%, -50%);
+}
+
+/* Estilos para a modal de saque */
+/* Estilos para a modal de saque */
+#saque-modal, #confirm-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro */
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 350px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Estilos para os inputs */
+.modal-content input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.modal-content input:focus {
+  border-color: #007BFF; /* Cor do foco */
+  outline: none;
+}
+
+/* Botões de ação */
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal-content button#sacar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.modal-content button#sacar:hover {
+  background-color: #45a049;
+}
+
+.modal-content button#fechar {
+  background-color: #FF5733;
+  color: white;
+}
+
+.modal-content button#fechar:hover {
+  background-color: #FF3D00;
+}
+
+/* Distância entre os elementos */
+.modal-content .input-group {
+  margin-bottom: 10px; /* 10px de distância entre inputs */
+}
+
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto; /* Centralizado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; /* Largura da modal */
+    text-align: center;
+}
+
+.modal-content input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Estilo para a mensagem de confirmação */
+#confirmation-message {
+    white-space: pre-wrap; /* Mantém quebras de linha */
+    margin-top: 20px;
+    font-family: monospace; /* Fonte monoespaçada */
+}

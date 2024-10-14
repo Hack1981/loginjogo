@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login com Firebase</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="login-container" class="login-container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Senha">
+      <button onclick="login()">Entrar</button>
+      <p id="error-message"></p>
+    </div>
+  </div>
+
+  <div id="main-content" class="main-content" style="display: none;">
+    <div class="header">
+      <p>Saldo: <span id="saldo">0</span></p>
+      <p>Pontuação Restante: <span id="pontuacao">1000000</span></p>
+      <button id="saque-button" class="saque-button" onclick="openSaqueModal()">Saque</button>
+    </div>
+    <div class="content-box">
+      <div class="inner-box">
+        <div id="balloon" class="balloon"></div>
+        <button id="bomb-button" class="bomb-button" onclick="inflateBalloon()"></button>
+        <div id="boom-message" class="boom-message">BOOM!!!</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="saque-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Realizar Saque</h2>
+      <input type="text" id="nome" placeholder="Nome">
+      <input type="number" id="valor" placeholder="Valor do Saque">
+      <input type="text" id="chavePix" placeholder="Chave Pix">
+      <button onclick="sacar()">Sacar</button>
+      <button onclick="closeSaqueModal()">Fechar</button>
+    </div>
+  </div>
+
+  <div id="confirm-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Confirmação do Saque</h2>
+      <p id="confirmation-message"></p>
+      <button onclick="copyMessage()">Copiar Mensagem</button>
+      <button onclick="closeConfirmModal()">Fechar</button>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
